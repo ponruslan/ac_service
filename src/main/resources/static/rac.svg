@@ -1,0 +1,18 @@
+<svg width="285" height="202" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+ <g>
+  <title>background</title>
+  <rect fill="#ffffff" id="canvas_background" height="204" width="287" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect x="1" y="1" fill="url(#gridpattern)" stroke-width="0" height="400" width="281"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <rect stroke="#000" fill-opacity="0" id="svg_4" height="194.999986" width="277.000029" y="3.453125" x="4" stroke-width="8" fill="#000000"/>
+  <text transform="matrix(3.402096994552039,0,0,3.402096994552039,-441.67539632058117,-434.6469131094232) " stroke="#000" xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_1" y="159.419868" x="146.381343" stroke-width="0" fill="#000000">RAC</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_2" y="145.747255" x="56.5625" stroke-width="0" stroke="#000" fill="#000000">серии бытовых</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_3" y="170.015346" x="54.507813" stroke-width="0" stroke="#000" fill="#000000">кондиционеров</text>
+ </g>
+</svg>

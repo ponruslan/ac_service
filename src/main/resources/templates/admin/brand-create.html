@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:insert="parts/common :: head"></head>
+<body>
+<nav th:insert="parts/navbar-admin :: navbar"></nav>
+<div class="container mt-4" style="width: 700px">
+    <h1>Создать бренд</h1>
+    <form action="#" th:action="@{/brands/create}" th:object="${brand}" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="name">Имя бренда</label>
+            <input class="form-control" type="text" th:field="*{name}" id="name" placeholder="Введите имя" required>
+        </div>
+        <div class="form-group">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Загрузить логотип</h5>
+                    <p>Лого должно быть в расширении ".svg"</p>
+                    <input type="file" name="file" accept=".svg">
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+
+</div>
+
+
+
+
+<!--<form action="#" th:action="@{/brands/create}" th:object="${brand}" method="post">-->
+<!--    <div class="form-group">-->
+<!--        <label for="name">Имя бренда</label>-->
+<!--        <input type="text" class="form-control" th:field="*{name}" id="name" required>-->
+<!--    </div>-->
+<!--    <input type="submit" value="Create brand">-->
+<!--</form>-->
+<div th:insert="parts/common :: scripts"></div>
+</body>
+</html>

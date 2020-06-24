@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:insert="parts/common :: head"></head>
+<body>
+<nav th:insert="parts/navbar-admin :: navbar"></nav>
+<div class="container mt-4">
+    <table width="100%">
+        <tbody>
+        <tr>
+            <td>
+                <h1 th:text="'Cписок серий '+${brand.name}"></h1>
+            </td>
+            <td>
+                <form action="#" th:action="@{/products}" th:object="${product}" method="post">
+                    <div class="form-row align-items-center">
+                        <div class="col-sm-3 my-1">
+                            <h6>Добавить серию</h6>
+                        </div>
+                        <div class="col my-1">
+                            <input type="text" th:class="'form-control '+ (${nameError} ? 'is-invalid' : '')" name="name" placeholder="Название серии" required>
+                            <div th:if="${nameError}" class="invalid-feedback" th:text="${nameError}"></div>
+                        </div>
+                        <div class="col-auto my-1">
+                            <div class="form-check">
+                                <input class="form-check-input" name="type" type="radio" value="RAC" checked>
+                                <label class="form-check-label">RAC</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="type" type="radio" value="LCAC">
+                                <label class="form-check-label">LCAC</label>
+                            </div>
+
+                        </div>
+                        <div class="col-auto my-1">
+                            <input type="hidden" th:value="${brand.id}" name="brandId"/>
+                            <button type="submit" class="btn btn-primary">Добавить</button>
+                        </div>
+                    </div>
+                </form>
+            </td>
+        </tbody>
+    </table>
+</div>
+<div class="container mt-3">
+    <div th:switch="${products}">
+        <h5 th:case="null">Список пуст</h5>
+        <div th:case="*">
+            <table class="table">
+                <thead class="table-active">
+                <tr>
+                    <th scope="col" style="max-width: 350px">Имя серии</th>
+                    <th scope="col">Тип</th>
+                    <th scope="col" style="width:200px;"></th>
+                    <th scope="col" >Питание и МБ</th>
+                    <th scope="col" >Размеры</th>
+                    <th scope="col" >Ошибки</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="product : ${products}">
+                    <th th:text="${product.name}" style="max-width: 350px"></th>
+                    <td th:text="${product.type}" style="vertical-align: middle;"></td>
+                    <!--                        Управление-->
+                    <td style="width:200px; vertical-align: middle;">
+                        <a type="button" class="btn btn-primary btn-sm" th:href="@{/products/update/{id}(id=${product.id})}">Изменить</a>
+                        <a type="button" class="btn btn-danger btn-sm" th:href="@{/products/delete/{id}(id=${product.id})}">Удалить</a>
+                    </td>
+                    <td style="vertical-align: middle;">
+                        <!--                        Коммуникации-->
+                        <a th:if="${product.connect}" class="btn btn-outline-secondary btn-sm" th:text="'ID:  '+${product.connect}" th:href="@{/connections/update/{id}(id=${product.connect},brandId=${brand.id})}"></a>
+                        <a th:unless="${product.connect}" class="btn btn-outline-danger btn-sm" th:href="@{/connections/create/{id}(id=${brand.id}, productId=${product.id})}">Добавить</a>
+                    </td>
+                    <td style="vertical-align: middle;">
+                        <!--                        Размеры-->
+                        <a th:if="${product.size}" type="button" class="btn btn-outline-secondary btn-sm" th:text="'ID:  '+${product.size}" th:href="@{/sizes/update/{id}(id=${product.size},brandId=${brand.id})}"></a>
+                        <a th:unless="${product.size}" type="button" class="btn btn-outline-danger btn-sm" th:href="@{/sizes/create/{id}(id=${brand.id}, productId=${product.id})}"> Добавить</a>
+                    </td>
+                    <!--                        Ошибки-->
+                    <td style="vertical-align: middle;">
+                        <a th:if="${product.error}" type="button" class="btn btn-outline-secondary btn-sm" th:text="${product.error}" th:href="@{/errors/update/{id}(id=${product.getErrorId()},brandId=${brand.id})}">123</a>
+                        <a th:unless="${product.error}" type="button" class="btn btn-outline-danger btn-sm" th:href="@{/errors/create/{id}(id=${brand.id}, productId=${product.id})}"> Добавить</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div th:insert="parts/common :: scripts"></div>
+</body>
+</html>

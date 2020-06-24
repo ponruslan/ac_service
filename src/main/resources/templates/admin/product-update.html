@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:insert="parts/common :: head"></head>
+<body>
+<nav th:insert="parts/navbar-admin :: navbar"></nav>
+<div class="container mt-3">
+    <div class="pt-2 pb-3">
+        <h1>Изменить серию:</h1>
+        <h3 th:text="${product.name}"></h3>
+    </div>
+    <form action="#" th:action="@{/products/update}" th:object="${product}" method="post">
+        <div class="form-group">
+            <label for="name">Имя серии:</label>
+            <input class="form-control" type="text" th:field="*{name}" id="name" placeholder="name">
+        </div>
+        <div class="form-group">
+            <p>Тип серии:</p>
+            <th:block th:each="type : ${types}">
+                <div class="form-check">
+                    <input name="type" type="radio" th:field="*{type}" th:value="${type}">
+                    <label th:text="${type}"></label>
+                </div>
+            </th:block>
+        </div>
+
+        <div class="form-group">
+            <label for="error">Выберите лист питания и МБ связи</label>
+            <select  class="form-control" id="connect" name="connect">
+                <option selected>Без листа</option>
+                <th:block th:each="connect : ${connects}">
+                    <option th:if="${connect} == ${product.connect}" th:text="${connect}" th:value="${connect.id}" selected></option>
+                    <option th:unless="${connect} == ${product.connect}" th:text="${connect}" th:value="${connect.id}"></option>
+                </th:block>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="size">Выберите лист размеров</label>
+            <select  class="form-control" id="size" name="size">
+                <option selected>Без листа</option>
+                <th:block th:each="size : ${sizes}">
+                    <option th:selected="${size} == ${product.size}" th:text="${size}" th:value="${size.id}" ></option>
+                </th:block>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="error">Выберите лист ошибок</label>
+            <select  class="form-control" id="error" name="error">
+                <option selected>Без листа</option>
+                <th:block th:each="error : ${errors}">
+                    <option th:if="${error} == ${product.error}" th:text="${error.name}" th:value="${error.id}" selected></option>
+                    <option th:unless="${error} == ${product.error}" th:text="${error.name}" th:value="${error.id}"></option>
+                </th:block>
+            </select>
+        </div>
+        <input type="hidden" th:value="*{id}" name="id">
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+</div>
+<div th:insert="parts/common :: scripts"></div>
+</body>
+</html>

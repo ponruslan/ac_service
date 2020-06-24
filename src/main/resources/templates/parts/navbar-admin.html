@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/brands">Админ-панель</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/brands">Бренды</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/connections/all">Питание и МБС</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/sizes/all">Размеры</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/errors/all">Ошибки</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/profile">Профайл</a>
+            </li>
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="/products/addPackage">пакет</a>-->
+<!--            </li>-->
+            <li>
+                <a class="nav-link" href="/" target="_blank">↗ Перейти на сайт</a>
+            </li>
+        </ul>
+        <div class="mr-3">
+        <a type="button" class="btn btn-success btn-sm" href="/products/addPackage">Добавить пакет</a>
+        </div>
+        <form th:action="@{/logout}" class="form-inline" method="post">
+            <button type="submit" class="btn btn-warning btn-sm" value="Sign Out">Выйти</button>
+        </form>
+    </div>
+    </div>
+</nav>
+</body>
+</html>

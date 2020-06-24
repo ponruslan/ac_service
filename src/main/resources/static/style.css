@@ -1,0 +1,45 @@
+#elastic {
+    display: block;
+    margin: 20px 0 0 0;
+}
+.text-center {
+    text-align: center;
+}
+
+.elastic {
+    /*border: 1px solid #ced4da;*/
+    padding: 10px;
+    width: fit-content;
+}
+
+.elastic p{
+    transition: all ease 500ms;
+}
+
+.elastic p.hide {
+    display: none;
+}
+
+
+.mark, mark {
+    /*padding: .2em;*/
+    color: #ffffff;
+    padding: .2em;
+    background-color: #007bff;
+}
+
+
+.card-img-top {
+    padding: 15px;
+    height: 7rem;
+}
+
+.ck-editor__editable {
+    min-height: 350px;
+    max-height: 350px;
+}
+
+select.form-control[multiple] {
+    height: 390px;
+}
+

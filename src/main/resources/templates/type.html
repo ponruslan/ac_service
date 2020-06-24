@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:insert="parts/common :: head">
+<body class="text-center">
+<nav th:insert="parts/navbar :: navbar"></nav>
+<div class="container mt-4">
+
+    <h3>Выберите тип серии кондиционера</h3>
+
+
+    <div class="container mt-4">
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <a align="center" th:href="@{product(brandId=${brandId},type=RAC)}"><img class="mb-4" src="/static/rac.svg" alt="" height="150"></a>
+            </div>
+            <div class="col-md-auto">
+                <a align="center" th:href="@{product(brandId=${brandId},type=LCAC)}"><img class="mb-4" src="/static/lcac.svg" alt="" height="150"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:insert="parts/common :: scripts"></div>
+</body>
+</html>

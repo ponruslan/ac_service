@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block th:fragment="editor">
+    <script src="/static/ckeditor5/build/ckeditor.js"></script>
+    <script>ClassicEditor
+        .create( document.querySelector( '.editor' ), {
+            toolbar: {
+                items: [
+                    'heading',
+                    '|',
+                    'bold',
+                    'italic',
+                    'link',
+                    'bulletedList',
+                    'numberedList',
+                    '|',
+                    'indent',
+                    'outdent',
+                    '|',
+                    'blockQuote',
+                    'insertTable',
+                    'undo',
+                    'redo'
+                ]
+            },
+            language: 'ru',
+            image: {
+                toolbar: [
+                    'imageTextAlternative',
+                    'imageStyle:full',
+                    'imageStyle:side'
+                ]
+            },
+            table: {
+                contentToolbar: [
+                    'tableColumn',
+                    'tableRow',
+                    'mergeTableCells'
+                ]
+            },
+            licenseKey: '',
+
+        } )
+        .then( editor => {
+            window.editor = editor;
+
+
+
+
+        } )
+        .catch( error => {
+            console.error( 'Oops, something gone wrong!' );
+            console.error( 'Please, report the following error in the https://github.com/ckeditor/ckeditor5 with the build id and the error stack trace:' );
+            console.warn( 'Build id: yw4wblmhcu6-ltg3fnvn6ys1' );
+            console.error( error );
+        } );
+    </script>
+</th:block>
+</body>
+</html>

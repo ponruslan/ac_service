@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:insert="parts/common :: head"></head>
+<body>
+<nav th:insert="parts/navbar-admin :: navbar"></nav>
+<div class="container mt-4">
+    <h1>Добавить серии пакетом</h1>
+    <form action="#" th:action="@{/products/addPackage}" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="brandId">Выберите бренд</label>
+            <select select  class="form-control" id="brandId" name="brandId" required>
+                <th:block th:each="brand : ${brands}">
+                    <option th:value="${brand.id}" th:utext="${brand.name}"></option>
+                </th:block>
+            </select>
+        </div>
+        <p>Выберите тип серий</p>
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input" name="type" type="radio" value="RAC" checked>
+                <label class="form-check-label">RAC</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" name="type" type="radio" value="LCAC">
+                <label class="form-check-label">LCAC</label>
+            </div>
+        </div>
+        <div class="mb-4">
+            <h5>В файле <code class="highlighter-rouge">*.txt</code> каждая серия должна быть с новой строки</h5>
+        </div>
+        <div class="form-group">
+            <label for="file">Загрузите файл</label>
+            <input type="file" class="form-control-file" name="file" id="file" accept=".txt" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+
+</div>
+</body>
+</html>

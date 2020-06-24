@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:insert="parts/common :: head"></head>
+<body>
+<nav th:insert="parts/navbar-admin :: navbar"></nav>
+<div class="container mt-3">
+    <div class="pt-2 pb-3">
+        <h1>Список листов размеров</h1>
+    </div>
+    <div th:switch="${sizes}">
+        <h5 th:case="null">Список пуст</h5>
+        <div th:case="*">
+            <table class="table">
+                <thead class="table-active">
+                <tr>
+                    <th scope="col" style="width:100px;">ID листа</th>
+                    <th scope="col" style="width:200px;"></th>
+                    <th scope="col">Принадлежность к сериям</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="size : ${sizes}" th:object="${size}">
+                    <th th:text="*{id}" style="width:100px; vertical-align: middle;"></th>
+                    <td style="width:200px; vertical-align: middle;">
+                        <a type="button" class="btn btn-primary btn-sm" th:href="@{/sizes/update/{id}(id=*{id})}">Изменить</a>
+                        <a type="button" class="btn btn-danger btn-sm" th:href="@{/sizes/delete/{id}(id=*{id})}">Удалить</a>
+                    </td>
+                    <td>
+                        <th:block th:each="product : ${size.products}" th:object="${product}">
+                            <span class="badge badge-secondary" th:text="*{name}"></span>
+                        </th:block>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div th:insert="parts/common :: scripts"></div>
+</body>
+</html>

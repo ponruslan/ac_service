@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:insert="parts/common :: head"></head>
+<body>
+<nav th:insert="parts/navbar-admin :: navbar"></nav>
+<div class="container mt-4">
+    <h1>Создать лист размеров</h1>
+    <form action="#" th:action="@{/sizes/create}" th:object="${size}" method="post" enctype="multipart/form-data">
+        <div class="form-row align-items-top">
+            <div class="col-sm-3 my-1">
+                <div class="form-group">
+                    <label for="products">Выберите серии</label>
+                    <select size="20" multiple class="form-control" id="products" name="products">
+                        <th:block th:each="product : ${products}">
+                            <option th:if="${product.id == productId}" th:value="${product.id}" th:utext="${product.name}" selected></option>
+                            <option th:unless="${product.id == productId}" th:value="${product.id}" th:utext="${product.name}"></option>
+                        </th:block>
+                    </select>
+                </div>
+            </div>
+            <div class="col my-1">
+                <div class="form-group">
+                    <label for="content">Введите размеры</label>
+                    <textarea class="editor" name="content" id="content" rows="10">
+                        <table class="table">
+  <tbody>
+    <tr>
+      <th scope="row">Максимальная длина трассы, м</th>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Минимальная длина трассы, м</th>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Дозаправка фреона, г/м<br>
+      при длине трассы свыше, м</th>
+      <td></td>
+    </tr>
+      <tr>
+      <th scope="row">Диаметр труб, мм</th>
+      <td></td>
+    </tr>
+      <tr>
+      <th scope="row">Размеры ВБ</th>
+      <td></td>
+    </tr>
+        <tr>
+      <th scope="row">Размеры НБ</th>
+      <td></td>
+    </tr>
+        <tr>
+      <th scope="row">Размер А, мм</th>
+      <td></td>
+    </tr>
+        <tr>
+      <th scope="row">Размер B, мм</th>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+            </textarea>
+                </div>
+                <div class="form-group">
+                    <label>Загрузить изображение размеров</label>
+                    <input type="file" name="file" >
+                </div>
+                <input type="hidden" th:value="${brandId}" name="brandId"/>
+                <div align="right">
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+<th:block th:insert="parts/editor :: editor"></th:block>
+<div th:insert="parts/common :: scripts"></div>
+</body>
+</html>

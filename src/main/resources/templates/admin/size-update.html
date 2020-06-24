@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:insert="parts/common :: head"></head>
+<body>
+<nav th:insert="parts/navbar-admin :: navbar"></nav>
+<div class="container mt-4">
+    <h1>Изменить лист размеров ID: <span th:text="${size}"></span></h1>
+    <form action="#" th:action="@{/sizes/update}" th:object="${size}" method="post" enctype="multipart/form-data">
+        <div class="form-row align-items-top">
+            <div class="col-sm-3 my-1">
+                <div class="form-group">
+                    <label for="products">Выберите серии</label>
+                    <select size="20" multiple class="form-control" id="products" name="products">
+                        <th:block th:each="product : ${products}">
+                            <option th:if="${product.size == size}" th:value="${product.id}" th:utext="${product.name}" selected></option>
+                            <option th:unless="${product.size == size}" th:value="${product.id}" th:utext="${product.name}"></option>
+                        </th:block>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <img th:if="*{filename}" th:src="@{/img/{url}(url=*{filename})}" class="img-thumbnail" style="width: 300px">
+                </div>
+            </div>
+            <div class="col my-1">
+                <div class="form-group">
+                    <label for="content">Введите размеры</label>
+                    <textarea class="editor" name="content" id="content" rows="10">
+                       <th:block th:utext="*{content}"></th:block>
+            </textarea>
+                </div>
+                <div class="custom-file">
+                    <label th:text="(*{filename} and *{filename} != '' ? 'Изменить изображение' : 'Загрузить изображение')"></label>
+                    <br>
+                    <input type="file" name="file">
+                </div>
+                <input type="hidden" th:value="${brandId}" name="brandId"/>
+                <input type="hidden" th:value="*{id}" name="id">
+                <div align="right">
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+<th:block th:insert="parts/editor :: editor"></th:block>
+<div th:insert="parts/common :: scripts"></div>
+</body>
+</html>

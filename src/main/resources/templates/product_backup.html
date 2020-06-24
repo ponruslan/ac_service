@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:insert="parts/common :: head"></head>
+<body>
+<nav th:insert="parts/navbar :: navbar"></nav>
+<div class="container mt-4">
+    <!--    <h1><span th:text="${brand.name}"/></h1>-->
+
+        <th:block th:if="${brand.filename}">
+                    <div class="container mt-4" >
+                        <img th:src="@{/img/{url}(url=${brand.filename})}" width="200">
+                    </div>
+        </th:block>
+                <div class="container mt-4" >
+    <table>
+        <tbody>
+        <tr>
+            <td valign="middle" style="width: 200px">
+                <h6>Выберите серию:</h6>
+            </td>
+            <td valign="middle" align="center" width="60%">
+                <select class="form-control"  name="series" id="series" onchange="window.location.href=this.options[this.selectedIndex].value">
+                    <option selected disabled>Серия не выбрана</option>
+                    <th:block th:each="product : ${products}">
+                        <option th:if="${currentProduct} == ${product}" th:value="'/product/'+${product.id}" th:utext="${product.name}" selected></option>
+                        <option th:unless="${currentProduct} == ${product}" th:value="'/product/'+${product.id}" th:utext="${product.name}"></option>
+                    </th:block>
+                </select>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+                </div>
+    <th:block th:if="${currentProduct}">
+        <div class="container mt-3">
+            <ul class="nav nav-pills mb-3"  id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Описание</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Питание и межблочная связь</a>
+                </li>
+                <li th:if="${size}" class="nav-item" role="presentation">
+                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Установочные размеры</a>
+                </li>
+                <li th:if="${error}" class="nav-item" role="presentation">
+                    <a class="nav-link" id="error-list-tab" data-toggle="pill" href="#error-list" role="tab" aria-controls="pills-contact" aria-selected="false">Коды ошибок</a>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">Контент описания</div>
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">Контент подвода питания и межблочной связи</div>
+            <div th:if="${size}" class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                <div th:remove="tag" th:utext="${size}"></div>
+            </div>
+            <div th:if="${error}" class="tab-pane fade" id="error-list" role="tabpanel" aria-labelledby="pills-contact-tab">
+                <div th:utext="${error}"></div>
+            </div>
+        </div>
+    </th:block>
+</div>
+<div th:insert="parts/common :: scripts"></div>
+</body>
+</html>

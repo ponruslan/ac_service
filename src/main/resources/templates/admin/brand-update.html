@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:insert="parts/common :: head"></head>
+<body>
+<nav th:insert="parts/navbar-admin :: navbar"></nav>
+<div class="container mt-4" style="width: 700px">
+    <h1>Изменить бренд "<span th:text="${brand.name}"></span>"</h1>
+    <form action="#" th:action="@{/brands/update}" th:object="${brand}" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="name">Имя бренда</label>
+            <input class="form-control" type="text" th:field="*{name}" id="name" required>
+        </div>
+        <div class="form-group">
+            <div class="card" style="width: 18rem;">
+                <th:block th:if="*{filename} and *{filename} != ''">
+                <img th:src="@{/img/{url}(url=${brand.filename})}" class="card-img-top" alt="...">
+                </th:block>
+                <div class="card-body">
+                    <h5 class="card-title" th:text="(*{filename} and *{filename} != '' ? 'Изменить логотип' : 'Загрузить логотип')"></h5>
+                    <p>Лого должно быть в расширении ".svg"</p>
+                    <input type="file" name="file" accept=".svg">
+                </div>
+            </div>
+        </div>
+        <input type="hidden" th:value="${brand.id}" name="id">
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteBrand">
+            Удалить
+        </button>
+        <div class="modal fade" id="deleteBrand" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel" th:text="'Вы точно хотите удалить бренд '+${brand.name} +'?'"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        При удалении бренда удаляются все серии которые он содержит
+                    </div>
+                    <div class="modal-footer">
+                        <a type="button" class="btn btn-danger" th:href="@{/brands/delete/{id}(id=*{id})}">Удалить</a>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+</div>
+<div th:insert="parts/common :: scripts"></div>
+</body>
+</html>

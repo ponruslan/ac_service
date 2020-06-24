@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:insert="parts/common :: head">
+</head>
+<body>
+<nav th:insert="parts/navbar :: navbar"></nav>
+
+<div class="container mt-3">
+    <h3 align="center">Выберите торговую марку</h3>
+    <div th:switch="${brands}">
+        <h2 th:case="null">Торговые марки не найдены!</h2>
+        <div align="center" th:case="*">
+            <table>
+                <tbody>
+                <tr th:each="brand : ${brands}">
+                    <td align="center">
+                        <div class="container mt-4">
+                            <a th:href="@{type?brandId={id}(id=${brand.id})}">
+                                <th:block th:if="${brand.filename} and ${brand.filename} != ''">
+                                    <img th:src="@{/img/{url}(url=${brand.filename})}" width="200px">
+                                </th:block>
+                                <th:block th:unless="${brand.filename} and ${brand.filename} != ''">
+                                    <h1 th:text="${brand.name}"></h1>
+                                </th:block>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!--<p>=========admin links=======</p>-->
+<!--<a href="/brands">Admin page</a>-->
+<!--<br>-->
+<!--<a href="/users">Users List</a>-->
+<div th:insert="parts/common :: scripts"></div>
+</body>
+</html>

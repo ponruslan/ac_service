@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:insert="parts/common :: head"></head>
+<body>
+<nav th:insert="parts/navbar-admin :: navbar"></nav>
+<div class="container mt-4">
+    <h1>Изменить лист ошибок</h1>
+    <form action="#" th:action="@{/errors/update}" th:object="${error}" method="post">
+        <div class="form-row align-items-top">
+            <div class="col-sm-3 my-1">
+                <div class="form-group">
+                    <label for="products">Выберите серии</label>
+                    <select multiple class="form-control" id="products" name="products" style="height: 475px">
+                        <th:block th:each="product : ${products}">
+                            <option th:if="${product.error == error}" th:value="${product.id}" th:utext="${product.name}" selected></option>
+                            <option th:unless="${product.error == error}" th:value="${product.id}" th:utext="${product.name}"></option>
+                        </th:block>
+                    </select>
+                </div>
+            </div>
+            <div class="col my-1">
+                <div class="form-group">
+                    <label for="name">Имя листа</label>
+                    <input class="form-control" type="text" th:field="*{name}" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="content">Содержимое листа</label>
+                    <textarea class="editor" name="content" id="content" rows="10">
+                        <th:block th:utext="*{content}"></th:block>
+            </textarea>
+                </div>
+                <input type="hidden" th:value="*{id}" name="id"/>
+                <input type="hidden" th:value="${brandId}" name="brandId"/>
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+            </div>
+        </div>
+    </form>
+</div>
+<th:block th:insert="parts/editor :: editor"></th:block>
+<div th:insert="parts/common :: scripts"></div>
+</body>
+</html>

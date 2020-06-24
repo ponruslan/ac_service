@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:insert="parts/common :: head"></head>
+<body>
+<nav th:insert="parts/navbar-admin :: navbar"></nav>
+<div class="container mt-3">
+    <div class="pt-2 pb-3">
+        <h1>Cписок брендов:</h1>
+    </div>
+    <div th:switch="${brands}" >
+        <div th:case="null" class="alert alert-primary" role="alert">Список пуст</div>
+        <div th:case="*"  class="container mt-4">
+            <div class="row row-cols-1 row-cols-md-3">
+                <div th:each="brand : ${brands}" class="col mb-4">
+                    <div class="card">
+                        <th:block th:if="${brand.filename} and ${brand.filename} != ''">
+                            <img th:src="@{/img/{url}(url=${brand.filename})}" class="card-img-top">
+                        </th:block>
+                        <div class="card-body">
+                            <th:block th:unless="${brand.filename} and ${brand.filename} != ''">
+                                <h5 class="card-title" th:text="${brand.name}">Card title</h5>
+                            </th:block>
+                            <div align="center">
+                                <a type="button" class="btn btn-outline-primary btn-sm" th:href="@{products(brandId=${brand.id})}">Список серий</a>
+                                <a type="button" class="btn btn-outline-danger btn-sm" th:href="@{brands/update/{id}(id=${brand.id})}">Редактировать</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p align="right"><a href="/brands/create" type="button" class="btn btn-primary">Добавить бренд</a></p>
+</div>
+<div th:insert="parts/common :: scripts"></div>
+</body>
+</html>

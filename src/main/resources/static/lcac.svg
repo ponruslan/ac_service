@@ -1,0 +1,18 @@
+<svg width="285" height="202" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+ <g>
+  <title>background</title>
+  <rect fill="#ffffff" id="canvas_background" height="204" width="287" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect x="1" y="1" fill="url(#gridpattern)" stroke-width="0" height="400" width="281"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <rect stroke="#000" fill-opacity="0" id="svg_4" height="194.999986" width="277.000029" y="3.453125" x="4" stroke-width="8" fill="#000000"/>
+  <text style="cursor: move;" transform="matrix(3.402096994552039,0,0,3.402096994552039,-441.67539632058117,-434.6469131094232) " stroke="#000" xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_1" y="159.419868" x="139.701103" stroke-width="0" fill="#000000">LCAC</text>
+  <text stroke="#000" transform="matrix(0.8006851673126221,0,0,0.8006851673126221,-1.5976329557597637,24.66209625080228) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_2" y="144.498325" x="29.460089" stroke-width="0" fill="#000000">серии полупромышленных</text>
+  <text stroke="#000" transform="matrix(0.8006851673126221,0,0,0.8006851673126221,-1.5976329557597637,24.66209625080228) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_7" y="173.223722" x="91.988581" stroke-width="0" fill="#000000">кондиционеров</text>
+ </g>
+</svg>

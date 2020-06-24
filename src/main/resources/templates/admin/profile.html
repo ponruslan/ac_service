@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:insert="parts/common :: head"></head>
+<body>
+<nav th:insert="parts/navbar-admin :: navbar"></nav>
+<div class="container mt-4">
+<h1>Изменить данные администратора</h1>
+<form action="#" th:action="@{/profile}" method="post">
+    <div class="form-group">
+    <label for="username">Логин</label>
+    <input type="text" class="form-control" th:value="${username}" name="username" id="username" required>
+    </div>
+    <div class="form-group">
+    <label for="password">Пароль</label>
+    <input type="password" class="form-control" name="password" id="password" placeholder="Введите новый пароль" required>
+    </div>
+    <button type="submit" class="btn btn-primary" >Сохранить</button>
+</form>
+</div>
+<div th:insert="parts/common :: scripts"></div>
+</body>
+</html>
