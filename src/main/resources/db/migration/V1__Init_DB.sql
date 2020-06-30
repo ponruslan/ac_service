@@ -6,13 +6,13 @@ create table brands (
     ) engine=InnoDB;
 create table connections (
     id bigint not null auto_increment,
-    content varchar(5120),
+    content longtext,
     primary key (id)
     ) engine=InnoDB;
 create table errors (
     id bigint not null auto_increment,
     name varchar(255),
-    content varchar(5120),
+    content longtext,
     primary key (id)
     ) engine=InnoDB;
 create table products (
@@ -27,7 +27,7 @@ create table products (
     ) engine=InnoDB;
 create table sizes (
     id bigint not null auto_increment,
-    content varchar(5120),
+    content longtext,
     filename varchar(255),
     primary key (id)
     ) engine=InnoDB;

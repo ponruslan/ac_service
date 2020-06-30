@@ -10,8 +10,11 @@ import java.util.List;
 @Service
 public class ErrorService {
 
-    @Autowired
-    private ErrorRepository errorRepository;
+    private final ErrorRepository errorRepository;
+
+    public ErrorService(ErrorRepository errorRepository) {
+        this.errorRepository = errorRepository;
+    }
 
     public Error findById(Long id){
         return errorRepository.getOne(id);
@@ -27,9 +30,5 @@ public class ErrorService {
 
     public void deleteById(Long id){
         errorRepository.deleteById(id);
-    }
-
-    public void deleteAll(){
-        errorRepository.deleteAll();
     }
 }

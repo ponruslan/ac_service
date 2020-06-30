@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/profile")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping
     public String profileUpdateForm(

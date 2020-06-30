@@ -1,5 +1,5 @@
 package com.ponomarenko.achandbook.model;
-import org.hibernate.validator.constraints.Length;
+
 import lombok.Data;
 
 import javax.persistence.*;
@@ -14,7 +14,7 @@ public class Error {
     private Long id;
     private String name;
 
-    @Length(max = 5120, message = "Content too long (more than 5kB)")
+    @Column(columnDefinition="LONGTEXT")
     private String content;
 
     @OneToMany

@@ -1,7 +1,6 @@
 package com.ponomarenko.achandbook.model;
 
 import lombok.Data;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,7 +13,7 @@ public class Size {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Length(max = 5120, message = "Content too long (more than 5kB)")
+    @Column(columnDefinition="LONGTEXT")
     private String content;
 
     private String filename;

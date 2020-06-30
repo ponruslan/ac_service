@@ -10,11 +10,10 @@ import java.util.List;
 @Service
 public class BrandService {
 
-    @Autowired
-    private BrandRepository brandRepository;
+    private final BrandRepository brandRepository;
 
-    public Brand findById(Long id){
-        return brandRepository.getOne(id);
+    public BrandService(BrandRepository brandRepository) {
+        this.brandRepository = brandRepository;
     }
 
     public List<Brand> findAll(){

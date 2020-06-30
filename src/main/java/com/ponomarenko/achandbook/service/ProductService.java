@@ -16,8 +16,11 @@ import java.util.stream.Collectors;
 @Service
 public class ProductService {
 
-    @Autowired
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
+
+    public ProductService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
 
     public Product findById(Long id){
         return productRepository.getOne(id);
@@ -50,10 +53,6 @@ public class ProductService {
 
     public void deleteById(Long id){
         productRepository.deleteById(id);
-    }
-
-    public List<Product> findByNameStartsWith(String prefix){
-        return productRepository.findByNameStartsWith(prefix);
     }
 
     public void addProductsFromFile(Brand brand, Type type, MultipartFile file) throws IOException {

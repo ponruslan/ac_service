@@ -10,8 +10,11 @@ import java.util.List;
 @Service
 public class SizeService {
 
-    @Autowired
-    private SizeRepository sizeRepository;
+    private final SizeRepository sizeRepository;
+
+    public SizeService(SizeRepository sizeRepository) {
+        this.sizeRepository = sizeRepository;
+    }
 
     public Size findById(Long id){
         return sizeRepository.getOne(id);

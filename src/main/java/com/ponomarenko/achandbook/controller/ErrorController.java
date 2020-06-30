@@ -15,11 +15,14 @@ import java.util.List;
 @RequestMapping("/errors")
 public class ErrorController {
 
-    @Autowired
-    private ProductService productService;
+    private final ProductService productService;
 
-    @Autowired
-    private ErrorService errorService;
+    private final ErrorService errorService;
+
+    public ErrorController(ProductService productService, ErrorService errorService) {
+        this.productService = productService;
+        this.errorService = errorService;
+    }
 
     @GetMapping("/create/{id}")
     public String ErTest(

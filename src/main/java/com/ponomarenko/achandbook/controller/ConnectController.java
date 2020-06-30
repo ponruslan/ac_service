@@ -15,11 +15,14 @@ import java.util.List;
 @RequestMapping("/connections")
 public class ConnectController {
 
-    @Autowired
-    private ConnectService connectService;
+    private final ConnectService connectService;
 
-    @Autowired
-    private ProductService productService;
+    private final ProductService productService;
+
+    public ConnectController(ConnectService connectService, ProductService productService) {
+        this.connectService = connectService;
+        this.productService = productService;
+    }
 
     @GetMapping("/create/{id}")
     public String createConnectForm(

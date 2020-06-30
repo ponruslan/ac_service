@@ -20,14 +20,17 @@ import java.util.UUID;
 @RequestMapping("/sizes")
 public class SizeController {
 
-    @Autowired
-    private ProductService productService;
+    private final ProductService productService;
 
-    @Autowired
-    private SizeService sizeService;
+    private final SizeService sizeService;
 
     @Value("${upload.path}")
     private String uploadPath;
+
+    public SizeController(ProductService productService, SizeService sizeService) {
+        this.productService = productService;
+        this.sizeService = sizeService;
+    }
 
     @GetMapping("/create/{id}")
     public String createSizeForm(

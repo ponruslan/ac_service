@@ -10,8 +10,11 @@ import java.util.List;
 @Service
 public class ConnectService {
 
-    @Autowired
-    private ConnectRepository connectRepository;
+    private final ConnectRepository connectRepository;
+
+    public ConnectService(ConnectRepository connectRepository) {
+        this.connectRepository = connectRepository;
+    }
 
     public Connect findById(Long id){
         return connectRepository.getOne(id);

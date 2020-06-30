@@ -18,11 +18,14 @@ import java.util.UUID;
 @RequestMapping("/brands")
 public class BrandController {
 
-    @Autowired
-    private BrandService brandService;
+    private final BrandService brandService;
 
     @Value("${upload.path}")
     private String uploadPath;
+
+    public BrandController(BrandService brandService) {
+        this.brandService = brandService;
+    }
 
     @GetMapping
     public String adminMainPage(Model model){

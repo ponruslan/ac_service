@@ -17,11 +17,14 @@ import java.util.List;
 @Controller
 public class MainController {
 
-    @Autowired
-    private BrandService brandService;
+    private final BrandService brandService;
 
-    @Autowired
-    private ProductService productService;
+    private final ProductService productService;
+
+    public MainController(BrandService brandService, ProductService productService) {
+        this.brandService = brandService;
+        this.productService = productService;
+    }
 
     @GetMapping("/")
     public String main(Model model){
