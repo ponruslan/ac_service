@@ -9,7 +9,7 @@
         <div class="form-row align-items-top">
             <div class="col-sm-3 my-1">
                 <div class="form-group">
-                    <label for="products">Выберите серии</label>
+                    <label for="products">Выберите модели</label>
                     <select multiple class="form-control" id="products" name="products" style="height: 475px">
                         <th:block th:each="product : ${products}">
                             <option th:if="${product.id == productId}" th:value="${product.id}"

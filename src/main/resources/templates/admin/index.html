@@ -21,7 +21,7 @@
                                 <h5 class="card-title" th:text="${brand.name}">Card title</h5>
                             </th:block>
                             <div align="center">
-                                <a type="button" class="btn btn-outline-primary btn-sm" th:href="@{products(brandId=${brand.id})}">Список серий</a>
+                                <a type="button" class="btn btn-outline-primary btn-sm" th:href="@{products(brandId=${brand.id})}">Список моделей</a>
                                 <a type="button" class="btn btn-outline-danger btn-sm" th:href="@{brands/update/{id}(id=${brand.id})}">Редактировать</a>
                             </div>
                         </div>

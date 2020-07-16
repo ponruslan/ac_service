@@ -5,16 +5,16 @@
 <nav th:insert="parts/navbar-admin :: navbar"></nav>
 <div class="container mt-3">
     <div class="pt-2 pb-3">
-        <h1>Изменить серию:</h1>
+        <h1>Изменить модель:</h1>
         <h3 th:text="${product.name}"></h3>
     </div>
     <form action="#" th:action="@{/products/update}" th:object="${product}" method="post">
         <div class="form-group">
-            <label for="name">Имя серии:</label>
+            <label for="name">Имя модели:</label>
             <input class="form-control" type="text" th:field="*{name}" id="name" placeholder="name">
         </div>
         <div class="form-group">
-            <p>Тип серии:</p>
+            <p>Тип модели:</p>
             <th:block th:each="type : ${types}">
                 <div class="form-check">
                     <input name="type" type="radio" th:field="*{type}" th:value="${type}">

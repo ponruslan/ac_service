@@ -4,7 +4,7 @@
 <body>
 <nav th:insert="parts/navbar-admin :: navbar"></nav>
 <div class="container mt-4">
-    <h1>Добавить серии пакетом</h1>
+    <h1>Добавить модели пакетом</h1>
     <form action="#" th:action="@{/products/addPackage}" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="brandId">Выберите бренд</label>
@@ -14,7 +14,7 @@
                 </th:block>
             </select>
         </div>
-        <p>Выберите тип серий</p>
+        <p>Выберите тип моделей</p>
         <div class="form-group">
             <div class="form-check">
                 <input class="form-check-input" name="type" type="radio" value="RAC" checked>
@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="mb-4">
-            <h5>В файле <code class="highlighter-rouge">*.txt</code> каждая серия должна быть с новой строки</h5>
+            <h5>В файле <code class="highlighter-rouge">*.txt</code> каждая модель должна быть с новой строки</h5>
         </div>
         <div class="form-group">
             <label for="file">Загрузите файл</label>

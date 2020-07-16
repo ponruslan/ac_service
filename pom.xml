@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.ponomarenko</groupId>
 	<artifactId>acservice</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.4</version>
 	<name>ACService</name>
 
 	<properties>
@@ -60,10 +60,6 @@
             <artifactId>hibernate-validator</artifactId>
             <version>6.0.19.Final</version>
         </dependency>
-		<dependency>
-			<groupId>org.flywaydb</groupId>
-			<artifactId>flyway-core</artifactId>
-		</dependency>
 		<!-- JAXB -->
 		<dependency>
 			<groupId>javax.xml.bind</groupId>

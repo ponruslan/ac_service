@@ -8,16 +8,16 @@
         <tbody>
         <tr>
             <td>
-                <h1 th:text="'Cписок серий '+${brand.name}"></h1>
+                <h1 th:text="'Список моделей '+${brand.name}"></h1>
             </td>
             <td>
                 <form action="#" th:action="@{/products}" th:object="${product}" method="post">
                     <div class="form-row align-items-center">
                         <div class="col-sm-3 my-1">
-                            <h6>Добавить серию</h6>
+                            <h6>Добавить модель</h6>
                         </div>
                         <div class="col my-1">
-                            <input type="text" th:class="'form-control '+ (${nameError} ? 'is-invalid' : '')" name="name" placeholder="Название серии" required>
+                            <input type="text" th:class="'form-control '+ (${nameError} ? 'is-invalid' : '')" name="name" placeholder="Название модели" required>
                             <div th:if="${nameError}" class="invalid-feedback" th:text="${nameError}"></div>
                         </div>
                         <div class="col-auto my-1">
@@ -48,7 +48,7 @@
             <table class="table">
                 <thead class="table-active">
                 <tr>
-                    <th scope="col" style="max-width: 350px">Имя серии</th>
+                    <th scope="col" style="max-width: 350px">Имя модели</th>
                     <th scope="col">Тип</th>
                     <th scope="col" style="width:200px;"></th>
                     <th scope="col" >Питание и МБ</th>

@@ -9,7 +9,7 @@
         <div class="form-row align-items-top">
             <div class="col-sm-3 my-1">
                 <div class="form-group">
-                    <label for="products">Выберите серии</label>
+                    <label for="products">Выберите модели</label>
                     <select multiple class="form-control" id="products" name="products" style="height: 475px">
                         <th:block th:each="product : ${products}">
                             <option th:if="${product.error == error}" th:value="${product.id}" th:utext="${product.name}" selected></option>
@@ -29,7 +29,7 @@
                         <th:block th:utext="*{content}"></th:block>
             </textarea>
                 </div>
-                <input type="hidden" th:value="*{id}" name="id"/>
+                <input type="hidden" th:value="${error.id}" name="id"/>
                 <input type="hidden" th:value="${brandId}" name="brandId"/>
                 <button type="submit" class="btn btn-primary">Сохранить</button>
             </div>

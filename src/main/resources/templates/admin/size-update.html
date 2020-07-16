@@ -9,7 +9,7 @@
         <div class="form-row align-items-top">
             <div class="col-sm-3 my-1">
                 <div class="form-group">
-                    <label for="products">Выберите серии</label>
+                    <label for="products">Выберите модели</label>
                     <select size="20" multiple class="form-control" id="products" name="products">
                         <th:block th:each="product : ${products}">
                             <option th:if="${product.size == size}" th:value="${product.id}" th:utext="${product.name}" selected></option>
@@ -34,7 +34,8 @@
                     <input type="file" name="file">
                 </div>
                 <input type="hidden" th:value="${brandId}" name="brandId"/>
-                <input type="hidden" th:value="*{id}" name="id">
+                <input type="hidden" th:value="${size.id}" name="id">
+                <input type="hidden" th:value="${size.filename}" name="filename">
                 <div align="right">
                 <button type="submit" class="btn btn-primary">Сохранить</button>
                 </div>

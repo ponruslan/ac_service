@@ -10,7 +10,7 @@
         </div>
     </th:block>
     <div class="container mt-4" >
-        <input class="form-control" type="text" id="elastic" th:placeholder="'Поиск серии '+${brand.name}+' типа '+ ${type}">
+        <input class="form-control" type="text" id="elastic" th:placeholder="'Поиск модели '+${brand.name}+' типа '+ ${type}">
 
         <div class="elastic">
             <th:block th:each="product : ${products}">
@@ -25,11 +25,11 @@
 
             <tr>
                 <td valign="middle" style="width: 200px">
-                    <h6>Выберите серию:</h6>
+                    <h6>Выберите модель:</h6>
                 </td>
                 <td valign="middle" align="center" width="60%">
                     <select class="form-control"  name="series" id="series" onchange="window.location.href=this.options[this.selectedIndex].value">
-                        <option selected disabled>Серия не выбрана</option>
+                        <option selected disabled>Модель не выбрана</option>
                         <th:block th:each="product : ${products}">
                             <option th:if="${currentProduct} == ${product}" th:value="'/product/'+${product.id}" th:utext="${product.name}" selected></option>
                             <option th:unless="${currentProduct} == ${product}" th:value="'/product/'+${product.id}" th:utext="${product.name}"></option>
