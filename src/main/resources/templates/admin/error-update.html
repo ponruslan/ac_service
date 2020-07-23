@@ -7,7 +7,7 @@
     <h1>Изменить лист ошибок</h1>
     <form action="#" th:action="@{/errors/update}" th:object="${error}" method="post">
         <div class="form-row align-items-top">
-            <div class="col-sm-3 my-1">
+            <div class="col-sm-3 my-1" style="max-width: 350px; flex: 0 0 100%;">
                 <div class="form-group">
                     <label for="products">Выберите модели</label>
                     <select multiple class="form-control" id="products" name="products" style="height: 475px">

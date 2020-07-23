@@ -59,11 +59,11 @@
             <div th:if="*{size}" class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                 <div class="row justify-content-md-center">
                     <div class="row">
-                    <div class="col">
+                        <div th:if="*{size.filename} and *{size.filename} != ''" class="col-md-auto">
+                            <img th:src="@{/img/{url}(url=*{size.filename})}" class="img-fluid" style="max-width: 400px">
+                        </div>
+                        <div class="col">
                         <div th:remove="tag" th:utext="*{size.content}"></div>
-                    </div>
-                    <div th:if="*{size.filename} and *{size.filename} != ''" class="col-md-auto">
-                        <img th:src="@{/img/{url}(url=*{size.filename})}" class="img-fluid" style="max-width: 400px">
                     </div>
                     </div>
                 </div>

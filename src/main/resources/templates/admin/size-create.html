@@ -7,7 +7,7 @@
     <h1>Создать лист размеров</h1>
     <form action="#" th:action="@{/sizes/create}" th:object="${size}" method="post" enctype="multipart/form-data">
         <div class="form-row align-items-top">
-            <div class="col-sm-3 my-1">
+            <div class="col-sm-3 my-1" style="max-width: 350px; flex: 0 0 100%;">
                 <div class="form-group">
                     <label for="products">Выберите модели</label>
                     <select size="20" multiple class="form-control" id="products" name="products">
